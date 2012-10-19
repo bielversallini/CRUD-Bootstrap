@@ -1,0 +1,13 @@
+#{extends 'CRUD/layout.html' /}
+#{set title:messages.get('crud.show.title', type.modelName) /}
+
+<h2>&{'crud.show.title', type.modelName}</h2>
+<hr>
+
+#{form action:@save(object._key()), enctype:'multipart/form-data', class:'form-horizontal'}
+    #{crud.form /}
+    <div class="form-actions">
+        <input type="submit" class="btn btn-primary" name="_save" value="&{'crud.save', type.modelName}" />
+        <a href="@{list()}" class="btn">&{'crud.cancel', type.modelName}</i></a>
+    </div>
+#{/form}
