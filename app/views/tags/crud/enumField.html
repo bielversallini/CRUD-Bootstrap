@@ -1,5 +1,10 @@
 #{field 'object.' + _name}
-<div class="control-group">
+#{ifError field.name}
+	<div class="control-group error">
+#{/ifError}
+#{else}
+	<div class="control-group">
+#{/else}
     <label class="control-label" for="${field.id}">&{_name}</label>
     <div class="controls">
 <select id="${field.id}" name="${field.name}">
@@ -15,10 +20,4 @@
         <option name="${it.name()}" ord="${it.ordinal()}" value="${it.name()}" ${selected ? 'selected="true"'.raw() : ''}>${label}</option>
         %{ } }%
 </select>
-
-#{ifError field.name}
-    <span class="help-inline">${field.error.raw()}</span>
-#{/ifError}
-</div>
-</div>
 #{/field}
