@@ -1,7 +1,12 @@
 %{ pName = 'object.' + _name + '.' + play.db.Model.Manager.factoryFor(_field.property.relationType).keyName() }%
 
 #{field 'object.' + _name}
-<div class="control-group">
+	#{ifError field.name}
+		<div class="control-group error">
+	#{/ifError}
+	#{else}
+		<div class="control-group">
+	#{/else}
     <label class="control-label" for="${field.id}">&{_name}</label>
     <div class="controls">
 
@@ -52,10 +57,4 @@
             %{ } }%
         </select>
     #{/else}
-
-    #{ifError field.name}
-        <span class="help-inline">${field.error.raw()}</span>
-    #{/ifError}
-    </div>
-</div>
 #{/field}

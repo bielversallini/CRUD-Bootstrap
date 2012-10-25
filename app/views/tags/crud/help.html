@@ -1,41 +1,52 @@
-%{ play.data.validation.Validation.getValidators(currentType.entityClass, fieldName, 'object').each() { }%
-    %{
-        switch (it.annotation.annotationType().name.substring(21)) {
-            case "Required":
-                out.println(messages.get('crud.help.required'))
-                break;
-            case "MinSize":
-                out.println(messages.get('crud.help.minlength', it.annotation.value()))
-                break;    
-            case "MaxSize":
-                out.println(messages.get('crud.help.maxlength', it.annotation.value()))
-                break;
-            case "Range":
-                out.println(messages.get('crud.help.range', it.annotation.min(), it.annotation.max()))
-                break;
-            case "Min":
-                out.println(messages.get('crud.help.min', it.annotation.value()))
-                break;
-            case "Email":
-                out.println(messages.get('crud.help.email'))
-                break;
-            case "Equals":
-                out.println(messages.get('crud.help.equals', it.params.equalsTo))
-                break;
-            case "Future":
-                if(it.params.reference) {
-                    out.println(messages.get('crud.help.after', it.params.reference))
-                } else {
-                    out.println(messages.get('crud.help.future'))
-                }
-                break;
-            case "Past":
-                if(it.params.reference) {
-                    out.println(messages.get('crud.help.before', it.params.reference))
-                } else {
-                    out.println(messages.get('crud.help.past'))
-                }
-                break;
-        }
-    }%
-%{ } }%
+<span class="help-inline">
+	%{ play.data.validation.Validation.getValidators(_type.entityClass, _name, 'object').each() { }%
+	    %{
+	        switch (it.annotation.annotationType().name.substring(21)) {
+	            case "Required":
+	            }%
+	            		<h3 style="line-height:13px; vertical-align: bottom; display: inline; color: #b94a48">
+							{%            
+			                out.println(messages.get('crud.help.required'))
+			                }%
+		                </h3>
+	                %{
+	                break;
+	                }%
+
+			%{
+	            case "MinSize":
+	                out.println(messages.get('crud.help.minlength', it.annotation.value()))
+	                break;    
+	            case "MaxSize":
+	                out.println(messages.get('crud.help.maxlength', it.annotation.value()))
+	                break;
+	            case "Range":
+	                out.println(messages.get('crud.help.range', it.annotation.min(), it.annotation.max()))
+	                break;
+	            case "Min":
+	                out.println(messages.get('crud.help.min', it.annotation.value()))
+	                break;
+	            case "Email":
+	                out.println(messages.get('crud.help.email'))
+	                break;
+	            case "Equals":
+	                out.println(messages.get('crud.help.equals', it.params.equalsTo))
+	                break;
+	            case "Future":
+	                if(it.params.reference) {
+	                    out.println(messages.get('crud.help.after', it.params.reference))
+	                } else {
+	                    out.println(messages.get('crud.help.future'))
+	                }
+	                break;
+	            case "Past":
+	                if(it.params.reference) {
+	                    out.println(messages.get('crud.help.before', it.params.reference))
+	                } else {
+	                    out.println(messages.get('crud.help.past'))
+	                }
+	                break;
+	        }
+	    }%
+	%{ } }%
+</span>
