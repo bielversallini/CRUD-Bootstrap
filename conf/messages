@@ -32,7 +32,7 @@ crud.search=Search
 crud.none=(None)
 crud.selectValue=(Please select a value)
 
-crud.help.required=Required.
+crud.help.required=*
 crud.help.minlength=Min length is %d.
 crud.help.maxlength=Max length is %d.
 crud.help.email=Valid email address.
