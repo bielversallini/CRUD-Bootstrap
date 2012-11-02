@@ -11,6 +11,7 @@ log
 logs
 precompiled
 tmp
+dist
 test-result
 eclipse
 server.pid
