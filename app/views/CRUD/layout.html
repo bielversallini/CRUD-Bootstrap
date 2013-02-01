@@ -3,16 +3,32 @@
 <head>
 <title>#{get 'title' /}</title>
 <meta charset="${_response_encoding}" />
+
 <link rel="stylesheet" href="@{'/public/css/bootstrap.css'}" />
 <style type="text/css">
   body {
     padding-top: 56px;
   }
 </style>
+
+<!-- Redactor -->
+<link rel="stylesheet" href="css/redactor.css" />
+<script src="js/redactor.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(
+	function()
+	{
+		$('.redactor').redactor();
+	}
+);
+</script>
+
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">

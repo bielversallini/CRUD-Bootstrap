@@ -13,6 +13,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Lob;
+
 import play.Logger;
 import play.Play;
 import play.data.binding.Binder;
@@ -22,7 +24,6 @@ import play.data.validation.Required;
 import play.db.Model;
 import play.db.Model.Factory;
 import play.exceptions.TemplateNotFoundException;
-import play.i18n.Messages;
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.Router;
@@ -356,13 +357,18 @@ public abstract class CRUD extends Controller {
                     type = "text";
                     if (field.isAnnotationPresent(MaxSize.class)) {
                         int maxSize = field.getAnnotation(MaxSize.class).value();
-                        if (maxSize > 100) {
+                        if (maxSize > 255) {
                             type = "longtext";
+                        } else {
+                        	type = "richtext";
                         }
                     }
                     if (field.isAnnotationPresent(Password.class)) {
                         type = "password";
                     }
+                }
+                if (field.isAnnotationPresent(Lob.class)) {
+                	type = "richtext";
                 }
                 if (Number.class.isAssignableFrom(field.getType()) || field.getType().equals(double.class) || field.getType().equals(int.class) || field.getType().equals(long.class)) {
                     type = "number";

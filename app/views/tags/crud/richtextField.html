@@ -1,0 +1,11 @@
+#{field 'object.' +     _name}
+	#{ifError field.name}
+		<div class="control-group error">
+	#{/ifError}
+	#{else}
+		<div class="control-group">
+	#{/else}
+	<label class="control-label" for="${field.id}">&{_name}</label>
+	<div class="controls">
+	<textarea id="${field.id}" class="redactor ${field.errorClass}" name="${field.name}">${params[field.name]?.escape()?.raw() ?: field.error?.message == 'validation.required' ? '' : _value?.escape()?.raw()}</textarea>
+#{/field}
